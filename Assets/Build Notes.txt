@@ -1,0 +1,16 @@
+Defusing all of these bombs is making me thirsty!
+
+Module ID: soda
+Version 1.0
+
+Created by: Berdnne
+
+Models used:
+"Simple Cola Can" (https://skfb.ly/6zJ6D) by Blender3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Sounds used:
+"Soup slurp" (https://freesound.org/people/Slave2theLight/sounds/157121/) by Slave2theLight is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/)
+"Drinking Sip Swallow Gasp" (https://freesound.org/people/Stevious42/sounds/259640/) by Stevious42 is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/3.0/)
+
+version 1.0
+- Initial release
