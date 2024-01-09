@@ -191,4 +191,97 @@ public class sodaScript : MonoBehaviour {
 		}
 	}
 
+#pragma warning disable 414
+	private readonly string TwitchHelpMessage = @"!{0} sip # sips that number of times. | !{0} slurp # slurps that number of times. | !{0} can submits the module.";
+#pragma warning restore 414
+
+	IEnumerator ProcessTwitchCommand (string command)
+	{
+		string[] split = command.ToUpperInvariant().Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+
+		yield return null;
+
+		if ("SIP".ContainsIgnoreCase(split[0]))
+		{
+			if (split.Length == 1)
+			{
+				yield return "sendtochaterror Please specify how many times to sip!";
+				yield break;
+			}
+			if (split.Length > 2)
+				yield break;
+
+			foreach (var num in split[1])
+				if (!"0123456789".Contains(num))
+					yield break;
+
+			int sipCount = 0;
+
+			while (sipCount < int.Parse(split[1]))
+			{
+				sipButton.OnInteract();
+				sipCount++;
+				yield return new WaitForSeconds(0.1f);
+			}
+			yield break;
+		}
+
+		if ("SLURP".ContainsIgnoreCase(split[0]))
+		{
+			if (split.Length == 1)
+			{
+				yield return "sendtochaterror Please specify how many times to slurp!";
+				yield break;
+			}
+
+			if (split.Length > 2)
+				yield break;
+
+			foreach (var num in split[1])
+				if (!"01234456789".Contains(num))
+					yield break;
+
+			int slurpCount = 0;
+
+			while (slurpCount < int.Parse(split[1]))
+			{
+				slurpButton.OnInteract();
+				slurpCount++;
+				yield return new WaitForSeconds(0.1f);
+			}
+			yield break;
+		}
+
+		if ("CAN".ContainsIgnoreCase(split[0]))
+		{
+			can.OnInteract();
+			yield return new WaitForSeconds(0.1f);
+		}
+	}
+
+	IEnumerator TwitchHandleForcedSolve()
+	{
+		yield return null;
+
+		if (enteredSipNum > correctSipNum)
+			enteredSipNum = 0;
+
+		if (enteredSlurpNum > correctSlurpNum)
+			enteredSlurpNum = 0;
+
+		while (enteredSipNum != correctSipNum)
+		{
+			sipButton.OnInteract();
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		while (enteredSlurpNum != correctSlurpNum)
+		{
+			slurpButton.OnInteract();
+			yield return new WaitForSeconds(0.1f);
+		}
+
+		can.OnInteract();
+		yield return new WaitForSeconds(0.1f);
+	}
 }
