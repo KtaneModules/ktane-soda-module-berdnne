@@ -1,12 +1,17 @@
 Defusing all of these bombs is making me thirsty!
 
 Module ID: soda
-Version 1.0
+Version 1.1
+
+Manual can be found here:
+https://ktane.timwi.de/HTML/Soda.html
 
 Created by: Berdnne
+Twitch Plays support: KiloBytes
 
 Models used:
 "Simple Cola Can" (https://skfb.ly/6zJ6D) by Blender3D is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+Buttons used were created by AshTheBash
 
 Sounds used:
 "Soup slurp" (https://freesound.org/people/Slave2theLight/sounds/157121/) by Slave2theLight is licensed under Creative Commons Attribution (https://creativecommons.org/licenses/by/4.0/)
@@ -14,3 +19,10 @@ Sounds used:
 
 version 1.0
 - Initial release
+
+version 1.1
+- Twitch Plays support (Thanks KiloBytes!)
+- Removed extraneous files
+- Centered nutrition facts text
+- Updated manual
+- Other things cleaned up
