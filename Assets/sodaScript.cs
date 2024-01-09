@@ -91,7 +91,7 @@ public class sodaScript : MonoBehaviour {
 		sipButton.AddInteractionPunch();
 		GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, transform);
 		GetComponent<KMAudio>().PlaySoundAtTransform("sip", transform);
-		Debug.Log("Sip button pressed! Now at " + enteredSipNum + " sips.");
+		Debug.Log("[Soda #" + moduleId + "] Sip! Now at " + enteredSipNum + " sips.");
 	}
 
 	void PressSlurpButton ()
@@ -100,13 +100,11 @@ public class sodaScript : MonoBehaviour {
 		slurpButton.AddInteractionPunch();
 		GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, transform);
 		GetComponent<KMAudio>().PlaySoundAtTransform("slurp", transform);
-		Debug.Log("Slurp button pressed! Now at " + enteredSlurpNum + " slurps.");
+		Debug.Log("[Soda #" + moduleId + "] Slurp! Now at " + enteredSlurpNum + " slurps.");
 	}
 
 	void PressCan ()
 	{
-		Debug.Log("Can pressed!");
-
 		if (moduleSolved){
 			return;
 		}
@@ -123,7 +121,7 @@ public class sodaScript : MonoBehaviour {
 			GetComponent<KMBombModule>().HandleStrike();
 			enteredSipNum = 0;
 			enteredSlurpNum = 0;
-			Debug.Log("[Soda #" + moduleId + "] Incorrect answer. Strike!");
+			Debug.Log("[Soda #" + moduleId + "] Incorrect consumption. Strike!");
 		}
 	}
 
