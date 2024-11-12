@@ -1,7 +1,7 @@
 Defusing all of these bombs is making me thirsty!
 
 Module ID: soda
-Version 1.1
+Version 1.2
 
 Manual can be found here:
 https://ktane.timwi.de/HTML/Soda.html
@@ -26,3 +26,6 @@ version 1.1
 - Centered nutrition facts text
 - Updated manual
 - Other things cleaned up
+
+version 1.2
+- Fixed logging
