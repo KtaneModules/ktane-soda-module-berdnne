@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +15,6 @@ public class sodaScript : MonoBehaviour {
 	public KMSelectable can;
 	public KMSelectable sipButton;
 	public KMSelectable slurpButton;
-	private int totalModuleNum;
 
 	// Text meshes
 	public TextMesh calorieText;
@@ -27,8 +26,9 @@ public class sodaScript : MonoBehaviour {
 	public TextMesh servingText;
 
 	// Logging
-	static int moduleIdCounter = 1;
 	int moduleId;
+	static int moduleIdCounter = 1;
+	private int totalModuleNum;
 	private bool moduleSolved = false;
 
 	// Module Variables
@@ -81,8 +81,9 @@ public class sodaScript : MonoBehaviour {
 
 		determineSolution();
 
-		Debug.Log("[Soda #" + moduleId + "] Calories: " + calorieNum + " Fat: " + fatNum + "g, Cholesterol: " + cholesterolNum + "mg,  Sodium: " + sodiumNum + "mg, Carbs: " + carbNum + "g, Protein: " + proteinNum + "g" + ", Solution: " + correctSipNum + " sips, " + correctSlurpNum + " slurps.");
-
+		Debug.LogFormat("[Soda #{0}] {1} Calories. Fat: {2}g, Cholesterol: {3}mg, Sodium: {4}mg, Carbs: {5}g, Protein: {6}g", moduleId, calorieNum, fatNum, cholesterolNum, sodiumNum, carbNum, proteinNum);
+		Debug.LogFormat("[Soda #{0}] Solution is {1} sips and {2} slurps.", moduleId, correctSipNum, correctSlurpNum);
+		
 	}
 
 	void PressSipButton ()
@@ -91,7 +92,7 @@ public class sodaScript : MonoBehaviour {
 		sipButton.AddInteractionPunch();
 		GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, transform);
 		GetComponent<KMAudio>().PlaySoundAtTransform("sip", transform);
-		Debug.Log("[Soda #" + moduleId + "] Sip! Now at " + enteredSipNum + " sips.");
+		Debug.LogFormat("[Soda #{0}] Sip! {1} sip(s).", moduleId, enteredSipNum);
 	}
 
 	void PressSlurpButton ()
@@ -100,11 +101,12 @@ public class sodaScript : MonoBehaviour {
 		slurpButton.AddInteractionPunch();
 		GetComponent<KMAudio>().PlayGameSoundAtTransform(KMSoundOverride.SoundEffect.BigButtonPress, transform);
 		GetComponent<KMAudio>().PlaySoundAtTransform("slurp", transform);
-		Debug.Log("[Soda #" + moduleId + "] Slurp! Now at " + enteredSlurpNum + " slurps.");
+		Debug.LogFormat("[Soda #{0}] Slurp! {1} slurp(s).", moduleId, enteredSlurpNum);
 	}
 
 	void PressCan ()
 	{
+
 		if (moduleSolved){
 			return;
 		}
@@ -114,14 +116,14 @@ public class sodaScript : MonoBehaviour {
 			moduleSolved = true;
 			GetComponent<KMBombModule>().HandlePass();
 			GetComponent<KMAudio>().PlaySoundAtTransform("burp", transform);
-			Debug.Log("[Soda #" + moduleId + "] Module solved.");
+			Debug.LogFormat("[Soda #{0}] Module solved.", moduleId);
 		}
 		else {
 			// strike
 			GetComponent<KMBombModule>().HandleStrike();
 			enteredSipNum = 0;
 			enteredSlurpNum = 0;
-			Debug.Log("[Soda #" + moduleId + "] Incorrect consumption. Strike!");
+			Debug.LogFormat("[Soda #{0}] Incorrect answer. Strike!", moduleId);
 		}
 	}
 
